@@ -7,14 +7,16 @@ import org.sjhstudio.lolchampions.data.repository.remote.ChampionRemoteDataSourc
 import org.sjhstudio.lolchampions.domain.model.Champion
 import org.sjhstudio.lolchampions.domain.repository.ChampionRepository
 import org.sjhstudio.lolchampions.presentation.base.UiState
+import javax.inject.Inject
 
-class ChampionRepositoryImpl(
+class ChampionRepositoryImpl @Inject constructor(
     private val championRemoteDataSource: ChampionRemoteDataSource
-): ChampionRepository {
-    override suspend fun getChampion(): Flow<UiState<List<Champion>>> = flow<UiState<List<Champion>>> {
-        val list = championRemoteDataSource.getChampion().getList()
-        emit(UiState.Success(list))
-    }.catch {
-        emit(UiState.Error(it))
-    }
+) : ChampionRepository {
+    override suspend fun getChampion(): Flow<UiState<List<Champion>>> =
+        flow<UiState<List<Champion>>> {
+            val list = championRemoteDataSource.getChampion().getList()
+            emit(UiState.Success(list))
+        }.catch {
+            emit(UiState.Error(it))
+        }
 }
