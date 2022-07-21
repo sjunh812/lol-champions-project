@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.sjhstudio.lolchampions.presentation.util.UrlHelper
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
@@ -19,9 +20,6 @@ object NetworkModule {
     private const val CONNECT_TIMEOUT = 20L
     private const val WRITE_TIMEOUT = 20L
     private const val READ_TIMEOUT = 20L
-
-    private const val BASE_URL = "http://ddragon.leagueoflegends.com/cdn"
-    private const val LOL_VERSION = "12.6.1"
 
     @Singleton
     @Provides
@@ -44,7 +42,7 @@ object NetworkModule {
             .add(KotlinJsonAdapterFactory())
             .build()
         return Retrofit.Builder()
-            .baseUrl("$BASE_URL/$LOL_VERSION/")
+            .baseUrl("${UrlHelper.BASE_URL}/${UrlHelper.LOL_VERSION}/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(client)
             .build()

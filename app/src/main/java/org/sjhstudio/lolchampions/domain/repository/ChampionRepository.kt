@@ -5,5 +5,5 @@ import org.sjhstudio.lolchampions.domain.model.Champion
 import org.sjhstudio.lolchampions.presentation.base.UiState
 
 interface ChampionRepository {
-    suspend fun getChampion(): Flow<UiState<List<Champion>>>
+    fun getChampion(): Flow<UiState<List<Champion>>>
 }

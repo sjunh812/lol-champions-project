@@ -10,7 +10,7 @@ import org.sjhstudio.lolchampions.presentation.base.UiState
 import javax.inject.Inject
 
 class GetChampionUseCase @Inject constructor(private val championRepository: ChampionRepository) {
-    suspend fun invoke(
+    fun invoke(
         scope: CoroutineScope,
         started: SharingStarted,
         initialValue: UiState<List<Champion>>

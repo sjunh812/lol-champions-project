@@ -12,7 +12,7 @@ import javax.inject.Inject
 class ChampionRepositoryImpl @Inject constructor(
     private val championRemoteDataSource: ChampionRemoteDataSource
 ) : ChampionRepository {
-    override suspend fun getChampion(): Flow<UiState<List<Champion>>> =
+    override fun getChampion(): Flow<UiState<List<Champion>>> =
         flow<UiState<List<Champion>>> {
             val list = championRemoteDataSource.getChampion().getList()
             emit(UiState.Success(list))

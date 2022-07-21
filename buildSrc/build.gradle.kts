@@ -15,4 +15,5 @@ object PluginVersion {
 dependencies {
     implementation("com.android.tools.build:gradle:${PluginVersion.GRADLE}")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginVersion.KOTLIN}")
+    implementation("com.squareup:javapoet:1.13.0")
 }
