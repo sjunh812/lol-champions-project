@@ -51,6 +51,10 @@ dependencies {
     implementation(Dependencies.Kotlin.COROUTINE)
 
     implementation(Dependencies.KTX.CORE)
+    implementation(Dependencies.KTX.VIEWMODEL)
+    implementation(Dependencies.KTX.RUNTIME)
+    implementation(Dependencies.KTX.ACTIVITY)
+    implementation(Dependencies.KTX.FRAGMENT)
 
     implementation(Dependencies.AndroidX.APPCOMPAT)
     implementation(Dependencies.AndroidX.CONSTRAINT_LAYOUT)
@@ -64,10 +68,10 @@ dependencies {
     implementation(Dependencies.Network.LOGGING_INTERCEPTOR)
 
     implementation(Dependencies.DI.HILT)
-    implementation(Dependencies.DI.HILT_COMPILER)
+    kapt(Dependencies.DI.HILT_COMPILER)
 
     implementation(Dependencies.Image.GLIDE)
-    implementation(Dependencies.Image.GLIDE_COMPILER)
+    annotationProcessor(Dependencies.Image.GLIDE_COMPILER)
 
     testImplementation(Dependencies.Test.JUNIT)
     androidTestImplementation(Dependencies.AndroidTest.EXT)

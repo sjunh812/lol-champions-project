@@ -11,6 +11,10 @@ object Dependencies {
 
     object KTX {
         const val CORE = "com.google.android.play:core-ktx:1.8.1"
+        const val VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+        const val RUNTIME = "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
+        const val ACTIVITY = "androidx.activity:activity-ktx:1.4.0"   // by viewModels()
+        const val FRAGMENT = "androidx.fragment:fragment-ktx:1.4.1"   // by activityViewModels()
     }
 
     object Google {
