@@ -4,13 +4,13 @@
 
     <data>
 
+        <import
+            alias="urlHelper"
+            type="org.sjhstudio.lolchampions.presentation.util.UrlHelperKt" />
+
         <variable
             name="champion"
             type="org.sjhstudio.lolchampions.domain.model.Champion" />
-
-        <variable
-            name="urlHelper"
-            type="org.sjhstudio.lolchampions.presentation.util.UrlHelper" />
 
     </data>
 
@@ -22,6 +22,7 @@
 
         <ImageView
             android:id="@+id/iv_champion"
+            imageUrl="@{urlHelper.getChampionImageUrl(champion.id)}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
@@ -39,7 +40,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_champion" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
