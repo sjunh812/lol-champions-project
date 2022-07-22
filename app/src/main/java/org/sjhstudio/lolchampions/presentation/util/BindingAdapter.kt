@@ -10,7 +10,6 @@ import org.sjhstudio.lolchampions.domain.model.Champion
 import org.sjhstudio.lolchampions.presentation.base.UiState
 import org.sjhstudio.lolchampions.presentation.base.successOrNull
 import org.sjhstudio.lolchampions.presentation.ui.adapter.ChampionAdapter
-import org.sjhstudio.lolchampions.presentation.ui.adapter.ChampionItemDecoration
 
 /**
  * '*' 과 Any 차이
@@ -25,24 +24,22 @@ fun RecyclerView.bindAdapter(adapter: RecyclerView.Adapter<*>) {
 @BindingAdapter("championItems")
 fun RecyclerView.bindChampionItems(uiState: UiState<List<Champion>>) {
     val boundAdapter = adapter
-    if(boundAdapter is ChampionAdapter) {
-        boundAdapter.submitList(uiState.successOrNull())
-    }
+    if (boundAdapter is ChampionAdapter) boundAdapter.submitList(uiState.successOrNull())
 }
 
 @BindingAdapter("itemDecoration")
 fun RecyclerView.bindItemDecoration(decor: RecyclerView.ItemDecoration) {
-    if(itemDecorationCount == 0) addItemDecoration(decor)
+    if (itemDecorationCount == 0) addItemDecoration(decor)
 }
 
 @BindingAdapter("showProgress")
 fun ProgressBar.bindShowProgress(uiState: UiState<*>) {
-    visibility = if(uiState is UiState.Loading) View.VISIBLE else View.GONE
+    visibility = if (uiState is UiState.Loading) View.VISIBLE else View.GONE
 }
 
 @BindingAdapter("imageUrl")
 fun ImageView.bindImageUrl(url: String?) {
-    if(!url.isNullOrEmpty()) {
+    if (!url.isNullOrEmpty()) {
         Glide.with(context)
             .load(url)
             .into(this)
