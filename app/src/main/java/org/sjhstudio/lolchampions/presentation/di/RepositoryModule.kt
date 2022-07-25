@@ -4,7 +4,9 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import org.sjhstudio.lolchampions.data.repository.ChampionInfoRepositoryImpl
 import org.sjhstudio.lolchampions.data.repository.ChampionRepositoryImpl
+import org.sjhstudio.lolchampions.domain.repository.ChampionInfoRepository
 import org.sjhstudio.lolchampions.domain.repository.ChampionRepository
 import javax.inject.Singleton
 
@@ -14,4 +16,8 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindChampionRepository(championRepositoryImpl: ChampionRepositoryImpl): ChampionRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindChampionInfoRepository(championInfoRepositoryImpl: ChampionInfoRepositoryImpl): ChampionInfoRepository
 }

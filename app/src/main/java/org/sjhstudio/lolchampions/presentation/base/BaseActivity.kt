@@ -15,4 +15,9 @@ abstract class BaseActivity<T : ViewDataBinding>(@LayoutRes private val layoutRe
         binding = DataBindingUtil.setContentView(this, layoutResId)
         binding.lifecycleOwner = this
     }
+
+    override fun onDestroy() {
+        binding.unbind()
+        super.onDestroy()
+    }
 }
