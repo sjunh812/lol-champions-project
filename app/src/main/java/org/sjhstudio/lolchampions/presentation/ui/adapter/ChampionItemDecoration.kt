@@ -13,12 +13,10 @@ class ChampionItemDecoration : RecyclerView.ItemDecoration() {
         state: RecyclerView.State
     ) {
         super.getItemOffsets(outRect, view, parent, state)
-        val spacePx = view.context.dpToPx(BETWEEN_SPACE) / 2
-        if(parent.getChildAdapterPosition(view) % 2 != 0) {
-            outRect.left = spacePx
-        } else {
-            outRect.right = spacePx
-        }
+        val spacePx =
+            view.context.dpToPx(BETWEEN_SPACE) / 2    // between space = left space + right space
+        if (parent.getChildAdapterPosition(view) % 2 != 0) outRect.left = spacePx
+        else outRect.right = spacePx
     }
 
     companion object {

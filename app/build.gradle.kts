@@ -73,6 +73,8 @@ dependencies {
     implementation(Dependencies.Image.GLIDE)
     annotationProcessor(Dependencies.Image.GLIDE_COMPILER)
 
+    implementation(Dependencies.Custom.CAROUSEL_RECYCLERVIEW)
+
     testImplementation(Dependencies.Test.JUNIT)
     androidTestImplementation(Dependencies.AndroidTest.EXT)
     androidTestImplementation(Dependencies.AndroidTest.ESPRESSO)

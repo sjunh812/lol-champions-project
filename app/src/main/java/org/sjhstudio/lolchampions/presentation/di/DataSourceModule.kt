@@ -4,10 +4,10 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import org.sjhstudio.lolchampions.data.repository.remote.ChampionDataSource
-import org.sjhstudio.lolchampions.data.repository.remote.ChampionDataSourceImpl
-import org.sjhstudio.lolchampions.data.repository.remote.ChampionInfoDataSource
-import org.sjhstudio.lolchampions.data.repository.remote.ChampionInfoDataSourceImpl
+import org.sjhstudio.lolchampions.data.repository.ChampionDataSource
+import org.sjhstudio.lolchampions.data.repository.ChampionDataSourceImpl
+import org.sjhstudio.lolchampions.data.repository.ChampionInfoDataSource
+import org.sjhstudio.lolchampions.data.repository.ChampionInfoDataSourceImpl
 import javax.inject.Singleton
 
 @Module

@@ -12,5 +12,5 @@ interface ChampionApi {
     suspend fun getChampion(): Response<ChampionResponse<Champion>>
 
     @GET("data/ko_KR/champion/{id}.json")
-    suspend fun getChampionInfo(@Path("id") id: String): Response<ChampionInfo>
+    suspend fun getChampionInfo(@Path("id") id: String): Response<ChampionResponse<ChampionInfo>>
 }

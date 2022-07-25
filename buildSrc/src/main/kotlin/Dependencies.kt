@@ -39,6 +39,10 @@ object Dependencies {
         const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:4.12.0"
     }
 
+    object Custom {
+        const val CAROUSEL_RECYCLERVIEW = "com.github.sparrow007:carouselrecyclerview:1.2.5"
+    }
+
     object Test {
         const val JUNIT = "junit:junit:4.13.2"
     }

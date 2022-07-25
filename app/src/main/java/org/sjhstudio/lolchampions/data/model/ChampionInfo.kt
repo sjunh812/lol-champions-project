@@ -9,11 +9,11 @@ data class ChampionInfo(
     @field:Json(name = "name") val name: String? = null,
     @field:Json(name = "title") val title: String? = null,
     @field:Json(name = "lore") val lore: String? = null,
-    @field:Json(name = "image") val image: String? = null,
+    @field:Json(name = "image") val image: Image? = null,
     @field:Json(name = "tags") val tags: List<String>? = null,
     @field:Json(name = "skins") val skins: List<Skin>? = null,
     @field:Json(name = "spells") val spells: List<Spell>? = null,
-    @field:Json(name = "passive") val passive: List<Passive>? = null,
+    @field:Json(name = "passive") val passive: Passive? = null,
 ) {
     @JsonClass(generateAdapter = true)
     data class Image(
@@ -30,6 +30,7 @@ data class ChampionInfo(
     data class Spell(
         @field:Json(name = "id") val id: String,
         @field:Json(name = "name") val name: String,
+        @field:Json(name = "description") val description: String
     )
 
     @JsonClass(generateAdapter = true)
@@ -38,4 +39,8 @@ data class ChampionInfo(
         @field:Json(name = "description") val description: String,
         @field:Json(name = "image") val image: Image
     )
+
+    companion object {
+        val EMPTY = ChampionInfo()
+    }
 }
