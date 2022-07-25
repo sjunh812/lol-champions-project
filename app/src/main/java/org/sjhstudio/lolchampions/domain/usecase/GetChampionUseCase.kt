@@ -14,7 +14,6 @@ class GetChampionUseCase @Inject constructor(private val championRepository: Cha
         scope: CoroutineScope,
         started: SharingStarted,
         initialValue: UiState<List<Champion>>
-    ): StateFlow<UiState<List<Champion>>> {
-        return championRepository.getChampion().stateIn(scope, started, initialValue)
-    }
+    ): StateFlow<UiState<List<Champion>>> =
+        championRepository.getChampion().stateIn(scope, started, initialValue)
 }
