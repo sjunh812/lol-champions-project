@@ -66,10 +66,10 @@
         <TextView
             android:id="@+id/tv_spell_description"
             style="@style/Text.Description"
+            htmlText="@{index &lt; spellList.size() ? spellList.get(index).description : null}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@{index &lt; spellList.size() ? spellList.get(index).description : null}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_spell"
             app:layout_constraintTop_toBottomOf="@id/tv_spell_title"
