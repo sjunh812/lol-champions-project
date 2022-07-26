@@ -53,10 +53,10 @@
         <TextView
             android:id="@+id/tv_passive_description"
             style="@style/Text.Description"
+            htmlText="@{passive.description}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="@{passive.description}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_passive"
             app:layout_constraintTop_toBottomOf="@id/tv_passive_title"
