@@ -1,9 +1,11 @@
 package org.sjhstudio.lolchampions.presentation.util
 
 import android.graphics.drawable.Drawable
+import android.text.Html
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -11,11 +13,16 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+import org.sjhstudio.lolchampions.R
+import org.sjhstudio.lolchampions.data.model.ChampionInfo
 import org.sjhstudio.lolchampions.domain.model.Champion
 import org.sjhstudio.lolchampions.presentation.base.UiState
 import org.sjhstudio.lolchampions.presentation.base.successOrNull
 import org.sjhstudio.lolchampions.presentation.ui.adapter.ChampionAdapter
+import org.sjhstudio.lolchampions.presentation.ui.adapter.ChampionSkinAdapter
 
 /**
  * '*' 과 Any 차이
@@ -31,8 +38,8 @@ fun RecyclerView.bindAdapter(adapter: RecyclerView.Adapter<*>) {
 fun CarouselRecyclerview.bindSkinAdapter(adapter: RecyclerView.Adapter<*>) {
     this.adapter = adapter
     setInfinite(true)
-    setAlpha(true)
-    setIntervalRatio(0.9f)
+    setAlpha(false)
+    setIntervalRatio(0.5f)
     isNestedScrollingEnabled = false
 }
 
@@ -40,6 +47,14 @@ fun CarouselRecyclerview.bindSkinAdapter(adapter: RecyclerView.Adapter<*>) {
 fun RecyclerView.bindChampionItems(uiState: UiState<List<Champion>>) {
     val boundAdapter = adapter
     if (boundAdapter is ChampionAdapter) boundAdapter.submitList(uiState.successOrNull())
+}
+
+@BindingAdapter("skinItems")
+fun RecyclerView.bindSkinItems(skinItems: List<ChampionInfo.Skin>?) {
+    val boundAdapter = adapter
+    if (boundAdapter is ChampionSkinAdapter && !skinItems.isNullOrEmpty()) boundAdapter.submitList(
+        skinItems
+    )
 }
 
 @BindingAdapter("itemDecoration")
@@ -57,6 +72,7 @@ fun ImageView.bindImageUrl(url: String?) {
     if (!url.isNullOrEmpty()) {
         Glide.with(context)
             .load(url)
+            .skipMemoryCache(false)
             .into(this)
     }
 }
@@ -89,6 +105,7 @@ fun ImageView.bindTransitionImageUrl(url: String?, onFinishedLoad: (() -> Unit)?
         }
         Glide.with(context)
             .load(url)
+            .skipMemoryCache(false)
             .listener(listener)
             .into(this)
     }
@@ -99,6 +116,26 @@ fun ImageView.bindSkinImageUrl(championId: String?, skinNum: Int?) {
     if (championId != null && skinNum != null) {
         Glide.with(context)
             .load(getSkinImageUrl(championId, skinNum))
+            .skipMemoryCache(false)
             .into(this)
     }
+}
+
+@BindingAdapter("tags")
+fun ChipGroup.bindTags(tags: List<String>?) {
+    tags?.forEach { tag ->
+        val tagView: Chip = Chip(context).apply {
+            text = tag
+            isCheckable = false
+            isCloseIconVisible = false
+            setChipBackgroundColorResource(R.color.purple)
+            setTextAppearanceResource(R.style.Text_Tag)
+        }
+        addView(tagView)
+    }
+}
+
+@BindingAdapter("htmlText")
+fun TextView.bindHtmlText(htmlText: String?) {
+    text = Html.fromHtml(htmlText ?: "", Html.FROM_HTML_MODE_COMPACT)
 }
