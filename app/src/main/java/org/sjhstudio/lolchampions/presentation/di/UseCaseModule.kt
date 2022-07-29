@@ -15,13 +15,11 @@ import org.sjhstudio.lolchampions.domain.usecase.GetChampionUseCase
 object UseCaseModule {
     @ViewModelScoped
     @Provides
-    fun getChampionUseCase(championRepository: ChampionRepository): GetChampionUseCase {
-        return GetChampionUseCase(championRepository)
-    }
+    fun getChampionUseCase(championRepository: ChampionRepository): GetChampionUseCase =
+        GetChampionUseCase(championRepository)
 
     @ViewModelScoped
     @Provides
-    fun getChampionInfoUseCase(championInfoRepository: ChampionInfoRepository): GetChampionInfoUseCase {
-        return GetChampionInfoUseCase(championInfoRepository)
-    }
+    fun getChampionInfoUseCase(championInfoRepository: ChampionInfoRepository): GetChampionInfoUseCase =
+        GetChampionInfoUseCase(championInfoRepository)
 }

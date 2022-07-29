@@ -13,7 +13,5 @@ import javax.inject.Singleton
 object ApiModule {
     @Singleton
     @Provides
-    fun getChampionApi(retrofit: Retrofit): ChampionApi {
-        return retrofit.create(ChampionApi::class.java)
-    }
+    fun getChampionApi(retrofit: Retrofit): ChampionApi = retrofit.create(ChampionApi::class.java)
 }

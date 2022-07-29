@@ -14,7 +14,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     getChampionUseCase: GetChampionUseCase
 ) : ViewModel() {
-    val uiState: StateFlow<UiState<List<Champion>>> = getChampionUseCase.invoke(
+    val uiState: StateFlow<UiState<List<Champion>>> = getChampionUseCase.execute(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000L),
         initialValue = UiState.Loading

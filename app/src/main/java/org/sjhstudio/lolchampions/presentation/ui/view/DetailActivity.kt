@@ -20,13 +20,14 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
     private val skinAdapter: ChampionSkinAdapter by lazy {
         ChampionSkinAdapter(viewModel.championId)
     }
-    val onFinishedLoadImage = fun() { supportStartPostponedEnterTransition() }
+    val onFinishedLoadImage = fun() {
+        supportStartPostponedEnterTransition()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind()
         supportPostponeEnterTransition()
-
         // Test code
         CoroutineScope(Dispatchers.Main).launch {
             viewModel.uiState.collect {
@@ -47,19 +48,6 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
             skinAdapter = this@DetailActivity.skinAdapter
         }
     }
-
-//    private fun initTransition() {
-//        supportPostponeEnterTransition()
-//        with(binding) {
-//            root.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
-//                override fun onPreDraw(): Boolean {
-//                    ivChampion.viewTreeObserver.removeOnPreDrawListener(this)
-//                    supportStartPostponedEnterTransition()
-//                    return true
-//                }
-//            })
-//        }
-//    }
 
     override fun onBackPressed() {
         supportFinishAfterTransition()

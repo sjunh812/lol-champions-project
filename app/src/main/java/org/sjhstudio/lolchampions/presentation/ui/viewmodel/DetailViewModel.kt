@@ -4,10 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.mapLatest
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.*
 import org.sjhstudio.lolchampions.data.model.ChampionInfo
 import org.sjhstudio.lolchampions.domain.usecase.GetChampionInfoUseCase
 import org.sjhstudio.lolchampions.presentation.base.UiState
@@ -33,6 +31,7 @@ class DetailViewModel @Inject constructor(
         initValue = UiState.Loading
     )
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val championInfo: StateFlow<ChampionInfo> = uiState.mapLatest { uiState ->
         uiState.successOrNull() ?: ChampionInfo.EMPTY
     }.stateIn(

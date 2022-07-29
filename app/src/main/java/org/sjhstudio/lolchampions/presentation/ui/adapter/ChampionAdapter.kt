@@ -12,7 +12,7 @@ import org.sjhstudio.lolchampions.databinding.ItemChampionBinding
 import org.sjhstudio.lolchampions.domain.model.Champion
 
 class ChampionAdapter(
-    private val onClickedItem: (Champion, Pair<View, String> ) -> Unit
+    private val onClickedItem: (Champion, Pair<View, String>) -> Unit
 ) : ListAdapter<Champion, ChampionAdapter.ChampionViewHolder>(diffCallback) {
     private var lastClickTime: Long = 0L
 
@@ -21,9 +21,13 @@ class ChampionAdapter(
         init {
             with(binding) {
                 root.setOnClickListener {
-                    if(SystemClock.elapsedRealtime() - lastClickTime > 1000) {
-                        val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return@setOnClickListener
-                        onClickedItem(getItem(position), Pair(ivChampion, ivChampion.transitionName))
+                    if (SystemClock.elapsedRealtime() - lastClickTime > 1000) {
+                        val position = adapterPosition.takeIf { it != RecyclerView.NO_POSITION }
+                            ?: return@setOnClickListener
+                        onClickedItem(
+                            getItem(position),
+                            Pair(ivChampion, ivChampion.transitionName)
+                        )
                     }
                     lastClickTime = SystemClock.elapsedRealtime()
                 }

@@ -10,6 +10,10 @@ import org.sjhstudio.lolchampions.data.repository.ChampionInfoDataSource
 import org.sjhstudio.lolchampions.data.repository.ChampionInfoDataSourceImpl
 import javax.inject.Singleton
 
+/**
+ * Bind 방법
+ * abstract fun 함수명(Impl): interface
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DataSourceModule {
