@@ -25,22 +25,13 @@ import org.sjhstudio.lolchampions.presentation.ui.adapter.ChampionAdapter
 import org.sjhstudio.lolchampions.presentation.ui.adapter.ChampionSkinAdapter
 
 /**
- * '*' 과 Any 차이
- * '*' : 구체적인 타입이 정해졌을때 사용가능 (val list = arrayListOf<*> (x))
- * Any : 언제든 모든 타입 대입가능
+ * Any 와 * 의 차이점
+ * Any : 언제든지 모든 타입에 대하여 대입가능
+ * '*' : 구체적인 타입이 정해졌을때만 사용 가능 (val list = arrayListOf<*> (x))
  */
 @BindingAdapter("adapter")
 fun RecyclerView.bindAdapter(adapter: RecyclerView.Adapter<*>) {
     this.adapter = adapter
-}
-
-@BindingAdapter("skinAdapter")
-fun CarouselRecyclerview.bindSkinAdapter(adapter: RecyclerView.Adapter<*>) {
-    this.adapter = adapter
-    setInfinite(true)
-    setAlpha(false)
-    setIntervalRatio(0.5f)
-    isNestedScrollingEnabled = false
 }
 
 @BindingAdapter("championItems")
@@ -60,6 +51,15 @@ fun RecyclerView.bindSkinItems(skinItems: List<ChampionInfo.Skin>?) {
 @BindingAdapter("itemDecoration")
 fun RecyclerView.bindItemDecoration(decor: RecyclerView.ItemDecoration) {
     if (itemDecorationCount == 0) addItemDecoration(decor)
+}
+
+@BindingAdapter("skinAdapter")
+fun CarouselRecyclerview.bindSkinAdapter(adapter: RecyclerView.Adapter<*>) {
+    this.adapter = adapter
+    setInfinite(true)
+    setAlpha(false)
+    setIntervalRatio(0.5f)
+    isNestedScrollingEnabled = false
 }
 
 @BindingAdapter("showProgress")

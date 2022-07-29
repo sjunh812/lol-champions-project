@@ -17,7 +17,6 @@ class ChampionInfoDataSourceImpl @Inject constructor(
     override suspend fun getChampionInfo(id: String): ChampionResponse<ChampionInfo> {
         val response = championApi.getChampionInfo(id)
         if (response.isSuccessful) {
-            println("xxx hi")
             return response.body()
                 ?: throw EmptyBodyException("[${response.code()}] : ${response.raw()}")
         } else throw NetworkErrorException("[${response.code()}] : ${response.raw()}")

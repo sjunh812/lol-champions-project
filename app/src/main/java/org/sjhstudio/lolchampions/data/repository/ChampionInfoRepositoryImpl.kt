@@ -14,9 +14,7 @@ class ChampionInfoRepositoryImpl @Inject constructor(
 ) : ChampionInfoRepository {
     override fun getChampionInfo(id: String): Flow<UiState<ChampionInfo>> =
         flow<UiState<ChampionInfo>> {
-            println("xxx getChampionInfo")
             val championInfo = championInfoDataSource.getChampionInfo(id).getList()[0]
-            println("xxx getChampionInfo2")
             emit(UiState.Success(championInfo))
         }.buffer().catch {
             emit(UiState.Error(it))
