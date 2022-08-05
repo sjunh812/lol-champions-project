@@ -51,6 +51,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             }
         }
         // 첫번째 pr입니다
+        // 두번째 pr입니다
     }
 
     private fun bind() {
