@@ -31,4 +31,4 @@
 
 ## 🔗 참고
 KimReady님의 프로젝트를 클론 코딩하여 진행하였습니다.  
-깃허브 링크 : https://github.com/KimReady/LOL-Champs/blob/master/app/src/main/res/layout/activity_main.xml
+깃허브 링크 : https://github.com/KimReady/LOL-Champs
